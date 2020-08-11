@@ -212,6 +212,19 @@ class _AddState extends State<Add> {
                     ),
                   ),
                   Container(
+                    padding: EdgeInsets.only(right: 12, top: 20.0),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'PACK DETAILS',
+                        style: Theme.of(context).textTheme.headline6.copyWith(
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: 0.67,
+                            color: kHintColor),
+                      ),
+                    ),
+                  ),
+                  Container(
                     padding: EdgeInsets.only(left: 12.0, right: 12, top: 20.0),
                     child: Stack(
                       children: [

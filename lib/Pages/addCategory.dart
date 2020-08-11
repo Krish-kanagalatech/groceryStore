@@ -22,7 +22,7 @@ class AddCategory extends StatelessWidget {
                 ? Container(
                     margin: EdgeInsets.only(right: 10),
                     child: Text(
-                      'Remove Category',
+                      'Remove',
                       style: TextStyle(
                         fontSize: 12,
                         color: Colors.red,
