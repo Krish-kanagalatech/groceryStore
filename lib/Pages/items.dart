@@ -1,5 +1,7 @@
 import 'package:delivoostores/Components/custom_appbar.dart';
 import 'package:delivoostores/Components/custom_appbar.dart';
+import 'package:delivoostores/Pages/addCategory.dart';
+import 'package:delivoostores/Pages/addSubCategory.dart';
 //import 'package:delivoostores/Components/search_bar.dart';
 import 'package:delivoostores/Themes/colors.dart';
 import 'package:flutter/material.dart';
@@ -77,6 +79,15 @@ class _ItemsPageState extends State<ItemsPage> {
               labelColor: kMainColor,
               unselectedLabelColor: kLightTextColor,
               indicatorPadding: EdgeInsets.symmetric(horizontal: 24.0),
+              onLongPress: (value) {
+                print(value);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AddCategory(true),
+                  ),
+                );
+              },
             ),
           ),
         ),
@@ -96,6 +107,15 @@ class _ItemsPageState extends State<ItemsPage> {
                       labelColor: kMainColor,
                       unselectedLabelColor: kLightTextColor,
                       indicatorPadding: EdgeInsets.symmetric(horizontal: 24.0),
+                      onLongPress: (value) {
+                        print(value);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddSubCategory(true),
+                          ),
+                        );
+                      },
                     ),
                     Divider(
                       color: kCardBackgroundColor,
@@ -201,7 +221,8 @@ class _ItemsPageState extends State<ItemsPage> {
             SpeedDialChild(
               child: Icon(Icons.accessibility),
               label: 'add Subcategory',
-              onTap: () => Navigator.pushNamed(context, PageRoutes.addSubCategory),
+              onTap: () =>
+                  Navigator.pushNamed(context, PageRoutes.addSubCategory),
             ),
             SpeedDialChild(
               child: Icon(Icons.accessibility),

@@ -1,6 +1,5 @@
 import 'package:delivoostores/Components/bottom_bar.dart';
 import 'package:delivoostores/Components/entry_field.dart';
-import 'package:delivoostores/OrderItemAccount/order_item_account.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -8,6 +7,9 @@ import '../../login_navigator.dart';
 
 //register page for registration of a new user
 class RegisterPage extends StatelessWidget {
+  final VoidCallback onVerificationDone;
+
+  RegisterPage(this.onVerificationDone);
   static const String id = 'register_page';
 
   @override
@@ -22,19 +24,25 @@ class RegisterPage extends StatelessWidget {
       ),
 
       //this column contains 3 textFields and a bottom bar
-      body: RegisterForm(),
+      body: RegisterForm(onVerificationDone),
     );
   }
 }
 
 class RegisterForm extends StatefulWidget {
+  final VoidCallback onVerificationDone;
+
+  RegisterForm(this.onVerificationDone);
   @override
-  _RegisterFormState createState() => _RegisterFormState();
+  _RegisterFormState createState() => _RegisterFormState(onVerificationDone);
 }
 
 class _RegisterFormState extends State<RegisterForm> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+  final VoidCallback onVerificationDone;
+
+  _RegisterFormState(this.onVerificationDone);
 
   @override
   void initState() {
@@ -104,13 +112,15 @@ class _RegisterFormState extends State<RegisterForm> {
 
         //continue button bar
         BottomBar(
-            text: "Continue",
+            text: "Login",
             onTap: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => OrderItemAccount(),
-                  ));
+              onVerificationDone();
+              // Navigator.pushNamed(context, LoginRoutes.verification);
+              // Navigator.pushReplacement(
+              //     context,
+              //     MaterialPageRoute(
+              //       builder: (context) => OrderItemAccount(),
+              //     ));
             })
       ],
     );

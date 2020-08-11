@@ -59,8 +59,8 @@ class PageRoutes {
       addToBank: (context) => AddToBank(),
       Items: (context) => ItemsPage(),
       orderItemAccountPage: (context) => OrderItemAccount(),
-      addCategory: (context) => AddCategory(),
-      addSubCategory: (context) => AddSubCategory(),
+      addCategory: (context) => AddCategory(false),
+      addSubCategory: (context) => AddSubCategory(false),
     };
   }
 }

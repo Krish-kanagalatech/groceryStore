@@ -1,5 +1,6 @@
 import 'package:delivoostores/Auth/MobileNumber/UI/mobile_input.dart';
 import 'package:delivoostores/Auth/login_navigator.dart';
+import 'package:delivoostores/Components/bottom_bar.dart';
 import 'package:delivoostores/Components/entry_field.dart';
 import 'package:delivoostores/Locale/locales.dart';
 import 'package:flutter/material.dart';
@@ -75,18 +76,30 @@ class PhoneNumber extends StatelessWidget {
               //     keyboardType: TextInputType.number,
               //   ),
               // ),
-              RaisedButton(
-                child: Text(
-                  AppLocalizations.of(context).continueText,
-                  style: Theme.of(context).textTheme.button,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                onPressed: () {
-                  Navigator.pushNamed(context, LoginRoutes.registration);
-                },
-              ),
+              BottomBar(
+                  text: "Continue",
+                  onTap: () {
+                    Navigator.pushNamed(context, LoginRoutes.registration);
+                    // onVerificationDone();
+                    // Navigator.pushNamed(context, LoginRoutes.verification);
+                    // Navigator.pushReplacement(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => OrderItemAccount(),
+                    //     ));
+                  }),
+              // RaisedButton(
+              //   child: Text(
+              //     AppLocalizations.of(context).continueText,
+              //     style: Theme.of(context).textTheme.button,
+              //   ),
+              //   shape: RoundedRectangleBorder(
+              //     borderRadius: BorderRadius.circular(30.0),
+              //   ),
+              //   onPressed: () {
+              //     Navigator.pushNamed(context, LoginRoutes.registration);
+              //   },
+              // ),
             ],
           ),
         ),

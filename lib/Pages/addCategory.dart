@@ -7,12 +7,31 @@ import 'package:flutter/widgets.dart';
 import 'package:delivoostores/Routes/routes.dart';
 
 class AddCategory extends StatelessWidget {
+  bool fromEdit;
+  AddCategory(this.fromEdit);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text('Add Category', style: Theme.of(context).textTheme.bodyText1),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(fromEdit ? 'Edit Category' : 'Add Category',
+                style: Theme.of(context).textTheme.bodyText1),
+            fromEdit
+                ? Container(
+                    margin: EdgeInsets.only(right: 10),
+                    child: Text(
+                      'Remove Category',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.red,
+                      ),
+                    ),
+                  )
+                : Container(),
+          ],
+        ),
         titleSpacing: 0.0,
       ),
       body: AddCategoryClass(),

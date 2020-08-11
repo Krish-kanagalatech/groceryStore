@@ -7,12 +7,31 @@ import 'package:flutter/widgets.dart';
 import 'package:delivoostores/Routes/routes.dart';
 
 class AddSubCategory extends StatelessWidget {
+  bool fromEdit;
+  AddSubCategory(this.fromEdit);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Sub Category',
-            style: Theme.of(context).textTheme.bodyText1),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(fromEdit ? 'Edit Sub Category' : 'Add Sub Category',
+                style: Theme.of(context).textTheme.bodyText1),
+            fromEdit
+                ? Container(
+                    margin: EdgeInsets.only(right: 10),
+                    child: Text(
+                      'Remove Sub Category',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.red,
+                      ),
+                    ),
+                  )
+                : Container(),
+          ],
+        ),
         titleSpacing: 0.0,
       ),
       body: AddSubCategoryClass(),
@@ -37,10 +56,6 @@ class _AddSubCategoryClassState extends State<AddSubCategoryClass> {
       children: <Widget>[
         ListView(
           children: <Widget>[
-            Divider(
-              color: kCardBackgroundColor,
-              thickness: 6.7,
-            ),
             // Padding(
             //   padding: EdgeInsets.only(left: 20.0),
             //   child: Column(
@@ -109,47 +124,67 @@ class _AddSubCategoryClassState extends State<AddSubCategoryClass> {
                     label: 'SUB CATEGORY NAME',
                     hint: 'Sub Category Name',
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        child: Text("Select category : "),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 3,left: 5),
-                        child: DropdownButton(
-                          value: value,
-                          icon: Icon(
-                            Icons.keyboard_arrow_down,
-                            color: kMainColor,
+                  Container(
+                    // padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 20.0),
+                    padding: EdgeInsets.only(
+                      left: 12.0,
+                      right: 20,
+                      top: 20,
+                    ),
+                    child: Stack(
+                      children: [
+                        FittedBox(
+                          child: Container(
+                            child: Text(value),
                           ),
-                          iconSize: 24.0,
-                          elevation: 16,
-                          style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                          underline: Container(
-                            height: 0,
-                          ),
-                          onChanged: (String newValue) {
-                            setState(() {
-                              value = newValue;
-                            });
-                          },
-                          items: categoryList
-                              .map<DropdownMenuItem<String>>((String address) {
-                            return DropdownMenuItem<String>(
-                              value: address,
-                              child: Text(
-                                address,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(color: Colors.black),
-                              ),
-                            );
-                          }).toList(),
                         ),
-                      ),
-                    ],
+                        Align(
+                          alignment: Alignment(1, 0),
+                          child: Container(
+                            // margin: EdgeInsets.only(top: 3, left: 5),
+                            child: DropdownButton(
+                              // value: value,
+                              icon: Container(
+                                margin: EdgeInsets.only(bottom: 20),
+                                child: Icon(
+                                  Icons.keyboard_arrow_down,
+                                  color: kMainColor,
+                                ),
+                              ),
+                              iconSize: 24.0,
+                              elevation: 16,
+                              style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              underline: Container(
+                                height: 0,
+                              ),
+                              onChanged: (String newValue) {
+                                setState(() {
+                                  value = newValue;
+                                });
+                              },
+                              items: categoryList.map<DropdownMenuItem<String>>(
+                                  (String address) {
+                                return DropdownMenuItem<String>(
+                                  value: address,
+                                  child: Container(
+                                    width:
+                                        MediaQuery.of(context).size.width - 80,
+                                    child: Text(
+                                      address,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   )
                 ],
               ),

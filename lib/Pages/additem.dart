@@ -29,16 +29,20 @@ class _AddState extends State<Add> {
   int addedFields = 0;
   List<bool> listOfAddedField = [false];
   String value = 'category 1';
+  String weight = 'kg';
 
-  List<String> categoryList = ['category 1', 'category 2'];
+  List<String> categoryList = ['category 1', 'category 2 edited value'];
 
   List<String> subCategoryList = ['sub category 1', 'sub category 2'];
+
+  List<String> weightList = ['kg', 'gm'];
   String valueSub = 'sub category 1';
 
   bool mainDropDown = false;
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Stack(
       children: <Widget>[
         ListView(
@@ -154,97 +158,119 @@ class _AddState extends State<Add> {
                     keyboardType: TextInputType.number,
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 20.0),
-                    child: Row(
+                    padding: EdgeInsets.only(left: 12.0, right: 12, top: 20.0),
+                    child: Stack(
                       children: [
-                        Container(
-                          child: Text("Select category : "),
+                        FittedBox(
+                          child: Container(
+                            child: Text(value),
+                          ),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(top: 3, left: 5),
-                          child: DropdownButton(
-                            value: value,
-                            icon: Icon(
-                              Icons.keyboard_arrow_down,
-                              color: kMainColor,
-                            ),
-                            iconSize: 24.0,
-                            elevation: 16,
-                            style: TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                            underline: Container(
-                              height: 0,
-                            ),
-                            onChanged: (String newValue) {
-                              setState(() {
-                                value = newValue;
-                              });
-                            },
-                            items: categoryList
-                                .map<DropdownMenuItem<String>>((String address) {
-                              return DropdownMenuItem<String>(
-                                value: address,
-                                child: Text(
-                                  address,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(color: Colors.black),
+                        Align(
+                          alignment: Alignment(1, 0),
+                          child: Container(
+                            // margin: EdgeInsets.only(top: 3, left: 5),
+                            child: DropdownButton(
+                              // value: value,
+                              icon: Container(
+                                alignment: Alignment(1, 0),
+                                margin: EdgeInsets.only(bottom: 20),
+                                child: Icon(
+                                  Icons.keyboard_arrow_down,
+                                  color: kMainColor,
                                 ),
-                              );
-                            }).toList(),
+                              ),
+                              iconSize: 24.0,
+                              elevation: 16,
+                              style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              underline: Container(
+                                height: 0,
+                              ),
+                              onChanged: (String newValue) {
+                                setState(() {
+                                  value = newValue;
+                                });
+                              },
+                              items: categoryList.map<DropdownMenuItem<String>>(
+                                  (String address) {
+                                return DropdownMenuItem<String>(
+                                  value: address,
+                                  child: Text(
+                                    address,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
                           ),
                         ),
                       ],
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 20.0),
-                    child: Row(
+                    padding: EdgeInsets.only(left: 12.0, right: 12, top: 20.0),
+                    child: Stack(
                       children: [
-                        Container(
-                          child: Text("Select sub category : "),
+                        FittedBox(
+                          child: Container(
+                            child: Text(valueSub),
+                          ),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(top: 3, left: 5),
-                          child: DropdownButton(
-                            value: valueSub,
-                            icon: Icon(
-                              Icons.keyboard_arrow_down,
-                              color: kMainColor,
-                            ),
-                            iconSize: 24.0,
-                            elevation: 16,
-                            style: TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                            underline: Container(
-                              height: 0,
-                            ),
-                            onChanged: (String newValue) {
-                              setState(() {
-                                valueSub = newValue;
-                              });
-                            },
-                            items: subCategoryList
-                                .map<DropdownMenuItem<String>>((String address) {
-                              return DropdownMenuItem<String>(
-                                value: address,
-                                child: Text(
-                                  address,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(color: Colors.black),
+                        Align(
+                          alignment: Alignment(1, 0),
+                          child: Container(
+                            // margin: EdgeInsets.only(bottom: 3, left: 5),
+                            child: DropdownButton(
+                              // value: valueSub,
+                              icon: Container(
+                                margin: EdgeInsets.only(bottom: 20),
+                                child: Icon(
+                                  Icons.keyboard_arrow_down,
+                                  color: kMainColor,
                                 ),
-                              );
-                            }).toList(),
+                              ),
+                              iconSize: 24.0,
+                              elevation: 16,
+                              style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              underline: Container(
+                                height: 0,
+                              ),
+                              onChanged: (String newValue) {
+                                setState(() {
+                                  valueSub = newValue;
+                                });
+                              },
+                              items: subCategoryList
+                                  .map<DropdownMenuItem<String>>(
+                                      (String address) {
+                                return DropdownMenuItem<String>(
+                                  value: address,
+                                  child: Container(
+                                    width:
+                                        MediaQuery.of(context).size.width - 80,
+                                    child: Text(
+                                      address,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
                           ),
                         ),
                       ],
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 20.0),
+                    padding: EdgeInsets.only(left: 12.0, right: 12, top: 20.0),
                     child: Column(
                       children: [
                         GestureDetector(
@@ -257,13 +283,14 @@ class _AddState extends State<Add> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                child: Text("Product 1"),
+                                child: Text("Pack 1"),
                               ),
                               Container(
                                 child: Icon(
                                   mainDropDown
                                       ? Icons.keyboard_arrow_up
                                       : Icons.keyboard_arrow_down,
+                                  color: kMainColor,
                                 ),
                               ),
                             ],
@@ -272,14 +299,14 @@ class _AddState extends State<Add> {
                         mainDropDown
                             ? EntryField(
                                 textCapitalization: TextCapitalization.words,
-                                label: 'PRODUCT PRICE',
+                                label: 'PACK PRICE',
                                 hint: 'Enter Price',
                               )
                             : Container(),
                         mainDropDown
                             ? EntryField(
                                 textCapitalization: TextCapitalization.words,
-                                label: 'PRODUCT SALE PRICE',
+                                label: 'PACK SALE PRICE',
                                 hint: 'Enter Sale Price',
                               )
                             : Container(),
@@ -290,12 +317,77 @@ class _AddState extends State<Add> {
                                 hint: 'Enter Quantity',
                               )
                             : Container(),
+                        mainDropDown
+                            ? Container(
+                                padding: EdgeInsets.symmetric(vertical: 20.0),
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 12.0),
+                                      child: Text(weight),
+                                    ),
+                                    Align(
+                                      alignment: Alignment(1, 0),
+                                      child: Container(
+                                        // margin: EdgeInsets.only(top: 3, left: 5),
+                                        child: DropdownButton(
+                                          // value: value,
+                                          icon: Container(
+                                            margin: EdgeInsets.only(bottom: 20),
+                                            child: Icon(
+                                              Icons.keyboard_arrow_down,
+                                              color: kMainColor,
+                                            ),
+                                          ),
+                                          iconSize: 24.0,
+                                          elevation: 16,
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black),
+                                          underline: Container(
+                                            height: 0,
+                                          ),
+                                          onChanged: (String newValue) {
+                                            setState(() {
+                                              weight = newValue;
+                                            });
+                                          },
+                                          items: weightList
+                                              .map<DropdownMenuItem<String>>(
+                                                  (String address) {
+                                            return DropdownMenuItem<String>(
+                                              value: address,
+                                              child: Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width -
+                                                    80,
+                                                child: Text(
+                                                  address,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                      color: Colors.black),
+                                                ),
+                                              ),
+                                            );
+                                          }).toList(),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            : Container(),
                       ],
                     ),
                   ),
                   for (int i = 0; i < addedFields; i++)
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 20.0),
+                      padding:
+                          EdgeInsets.only(left: 12.0, right: 12, top: 20.0),
                       child: Column(
                         children: [
                           GestureDetector(
@@ -308,13 +400,14 @@ class _AddState extends State<Add> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
-                                  child: Text("Product ${i + 2}"),
+                                  child: Text("Pack ${i + 2}"),
                                 ),
                                 Container(
                                   child: Icon(
                                     listOfAddedField[i]
                                         ? Icons.keyboard_arrow_up
                                         : Icons.keyboard_arrow_down,
+                                    color: kMainColor,
                                   ),
                                 ),
                               ],
@@ -323,14 +416,14 @@ class _AddState extends State<Add> {
                           listOfAddedField[i]
                               ? EntryField(
                                   textCapitalization: TextCapitalization.words,
-                                  label: 'PRODUCT PRICE',
+                                  label: 'PACK PRICE',
                                   hint: 'Enter Price',
                                 )
                               : Container(),
                           listOfAddedField[i]
                               ? EntryField(
                                   textCapitalization: TextCapitalization.words,
-                                  label: 'PRODUCT SALE PRICE',
+                                  label: 'PACK SALE PRICE',
                                   hint: 'Enter Sale Price',
                                 )
                               : Container(),
@@ -341,22 +434,88 @@ class _AddState extends State<Add> {
                                   hint: 'Enter Quantity',
                                 )
                               : Container(),
+                          listOfAddedField[i]
+                              ? Container(
+                                  padding: EdgeInsets.symmetric(vertical: 20.0),
+                                  child: Stack(
+                                    children: [
+                                      Container(
+                                        child: Text(weight),
+                                      ),
+                                      Align(
+                                        alignment: Alignment(1, 0),
+                                        child: Container(
+                                          // margin: EdgeInsets.only(top: 3, left: 5),
+                                          child: DropdownButton(
+                                            // value: value,
+                                            icon: Container(
+                                              margin:
+                                                  EdgeInsets.only(bottom: 20),
+                                              child: Icon(
+                                                Icons.keyboard_arrow_down,
+                                                color: kMainColor,
+                                              ),
+                                            ),
+                                            iconSize: 24.0,
+                                            elevation: 16,
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black),
+                                            underline: Container(
+                                              height: 0,
+                                            ),
+                                            onChanged: (String newValue) {
+                                              setState(() {
+                                                weight = newValue;
+                                              });
+                                            },
+                                            items: weightList
+                                                .map<DropdownMenuItem<String>>(
+                                                    (String address) {
+                                              return DropdownMenuItem<String>(
+                                                value: address,
+                                                child: Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width -
+                                                      80,
+                                                  child: Text(
+                                                    address,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                        color: Colors.black),
+                                                  ),
+                                                ),
+                                              );
+                                            }).toList(),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              : Container(),
                         ],
                       ),
                     ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        addedFields += 1;
-                        listOfAddedField.insert(addedFields, false);
-                      });
-                    },
-                    child: Text("+ ADD MORE OPTIONS",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.green,
-                            fontSize: 10,
-                            letterSpacing: 0.5)),
+                  Container(
+                    padding: EdgeInsets.only(left: 12.0, right: 12, top: 20.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          addedFields += 1;
+                          listOfAddedField.insert(addedFields, false);
+                        });
+                      },
+                      child: Text("+ ADD MORE OPTIONS",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.green,
+                              fontSize: 10,
+                              letterSpacing: 0.5)),
+                    ),
                   ),
                   SizedBox(
                     height: 80.0,

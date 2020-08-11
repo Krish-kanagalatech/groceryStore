@@ -1,6 +1,7 @@
 import 'package:delivoostores/Auth/MobileNumber/UI/phone_number.dart';
 import 'package:delivoostores/Auth/Registration/UI/register_page.dart';
 import 'package:delivoostores/Auth/Verification/UI/verification_page.dart';
+import 'package:delivoostores/OrderItemAccount/order_item_account.dart';
 import 'package:flutter/material.dart';
 import 'package:delivoostores/Routes/routes.dart';
 
@@ -10,6 +11,7 @@ class LoginRoutes {
   static const String loginRoot = 'login/';
   static const String registration = 'login/registration';
   static const String verification = 'login/verification';
+  static const String orderItemAccount = 'OrderItemAccount';
 }
 
 class LoginData {
@@ -23,6 +25,8 @@ class LoginData {
 class LoginNavigator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    VoidCallback hi = () =>
+        Navigator.popAndPushNamed(context, PageRoutes.orderItemAccountPage);
     return WillPopScope(
       onWillPop: () async {
         var canPop = navigatorKey.currentState.canPop();
@@ -41,15 +45,20 @@ class LoginNavigator extends StatelessWidget {
               builder = (BuildContext _) => PhoneNumber();
               break;
             case LoginRoutes.registration:
-              builder = (BuildContext _) =>
-                  RegisterPage();
+              builder = (BuildContext _) => RegisterPage(
+                    () {
+                      Navigator.popAndPushNamed(
+                          context, PageRoutes.orderItemAccountPage);
+                    },
+                  );
               break;
             case LoginRoutes.verification:
               builder = (BuildContext _) => VerificationPage(
                     () {
-                      Navigator.popAndPushNamed(context, PageRoutes.orderItemAccountPage);
-                },
-              );
+                      Navigator.popAndPushNamed(
+                          context, PageRoutes.orderItemAccountPage);
+                    },
+                  );
               break;
           }
           return MaterialPageRoute(builder: builder, settings: settings);
