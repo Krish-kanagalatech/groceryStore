@@ -1,3 +1,4 @@
+import 'package:delivoostores/Auth/MobileNumber/UI/mobile_input.dart';
 import 'package:delivoostores/Components/entry_field.dart';
 import 'package:delivoostores/Themes/colors.dart';
 import 'package:delivoostores/Components/bottom_bar.dart';
@@ -86,8 +87,12 @@ class _OtpVerifyState extends State<OtpVerify> {
                 style: Theme.of(context).textTheme.headline4,
               ),
               Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: MobileInput(),
+              ),
+              Padding(
                 padding: EdgeInsets.only(
-                    left: 8.0, right: 60.0, top: 16.0, bottom: 8.0),
+                    left: 20.0, right: 20.0, top: 16.0, bottom: 8.0),
                 child: EntryField(
                   controller: _controller,
                   readOnly: false,
@@ -123,8 +128,8 @@ class _OtpVerifyState extends State<OtpVerify> {
                 ),
                 onPressed: _counter < 1
                     ? () {
-                  verifyPhoneNumber();
-                }
+                        verifyPhoneNumber();
+                      }
                     : null),
           ],
         ),

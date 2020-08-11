@@ -10,6 +10,7 @@ class OrderPage extends StatefulWidget {
 
 class _OrderPageState extends State<OrderPage> {
   final List<Tab> tabs = <Tab>[
+    Tab(text: 'SENT FOR DELIVERY'),
     Tab(text: 'NEW ORDERS'),
     Tab(text: 'PAST ORDERS'),
   ];

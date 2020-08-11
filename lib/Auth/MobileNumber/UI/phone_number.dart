@@ -1,4 +1,6 @@
 import 'package:delivoostores/Auth/MobileNumber/UI/mobile_input.dart';
+import 'package:delivoostores/Auth/login_navigator.dart';
+import 'package:delivoostores/Components/entry_field.dart';
 import 'package:delivoostores/Locale/locales.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 //first page that takes phone number as input for verification
 class PhoneNumber extends StatelessWidget {
   static const String id = 'phone_number';
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +49,44 @@ class PhoneNumber extends StatelessWidget {
               Image.asset(
                 "images/logos/seller.png", //footer image
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                child: MobileInput(),
-              )
+              // Padding(
+              //   padding: EdgeInsets.symmetric(horizontal: 20.0),
+              //   child: MobileInput(),
+              // ),
+              // Padding(
+              //   padding: EdgeInsets.only(
+              //       left: 8.0, right: 16.0, top: 16.0, bottom: 8.0),
+              //   child: EntryField(
+              //     controller: _controller,
+              //     readOnly: false,
+              //     label: 'ENTER MAIL',
+              //     maxLength: 6,
+              //     keyboardType: TextInputType.number,
+              //   ),
+              // ),
+              // Padding(
+              //   padding: EdgeInsets.only(
+              //       left: 8.0, right: 16.0, top: 16.0, bottom: 8.0),
+              //   child: EntryField(
+              //     controller: _controller,
+              //     readOnly: false,
+              //     label: 'ENTER PASSWORD',
+              //     maxLength: 6,
+              //     keyboardType: TextInputType.number,
+              //   ),
+              // ),
+              RaisedButton(
+                child: Text(
+                  AppLocalizations.of(context).continueText,
+                  style: Theme.of(context).textTheme.button,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, LoginRoutes.registration);
+                },
+              ),
             ],
           ),
         ),

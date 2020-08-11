@@ -5,6 +5,7 @@ import 'package:delivoostores/Themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:delivoostores/Routes/routes.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class ItemsPage extends StatefulWidget {
   @override
@@ -184,15 +185,40 @@ class _ItemsPageState extends State<ItemsPage> {
                 ));
           }).toList(),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.pushNamed(context, PageRoutes.addItem),
-          tooltip: 'ADD PRODUCT',
+        floatingActionButton: SpeedDial(
+          //provide here features of your parent FAB
           child: Icon(
             Icons.add,
-            size: 15.7,
+            size: 20,
             color: Colors.white,
           ),
+          children: [
+            SpeedDialChild(
+              child: Icon(Icons.accessibility),
+              label: 'add Category',
+              onTap: () => Navigator.pushNamed(context, PageRoutes.addCategory),
+            ),
+            SpeedDialChild(
+              child: Icon(Icons.accessibility),
+              label: 'add Subcategory',
+              onTap: () => Navigator.pushNamed(context, PageRoutes.addSubCategory),
+            ),
+            SpeedDialChild(
+              child: Icon(Icons.accessibility),
+              label: 'add Product',
+              onTap: () => Navigator.pushNamed(context, PageRoutes.addItem),
+            ),
+          ],
         ),
+        // FloatingActionButton(
+        //   onPressed: () => Navigator.pushNamed(context, PageRoutes.addItem),
+        //   tooltip: 'ADD PRODUCT',
+        //   child: Icon(
+        //     Icons.add,
+        //     size: 15.7,
+        //     color: Colors.white,
+        //   ),
+        // ),
       ),
     );
   }

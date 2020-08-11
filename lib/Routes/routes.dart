@@ -7,6 +7,8 @@ import 'package:delivoostores/OrderItemAccount/Account/UI/ListItems/wallet_page.
 import 'package:delivoostores/OrderItemAccount/Account/UI/account_page.dart';
 import 'package:delivoostores/OrderItemAccount/Order/UI/order_page.dart';
 import 'package:delivoostores/OrderItemAccount/Order/UI/orderinfo_page.dart';
+import 'package:delivoostores/Pages/addCategory.dart';
+import 'package:delivoostores/Pages/addSubCategory.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:delivoostores/OrderItemAccount/Account/UI/ListItems/insight_page.dart';
@@ -36,6 +38,8 @@ class PageRoutes {
   static const String editItem = 'edititem';
   static const String Items = 'items';
   static const String addToBank = 'addtobank_page';
+  static const String addCategory = 'addCategory';
+  static const String addSubCategory = 'addSubCategory';
 
   Map<String, WidgetBuilder> routes() {
     return {
@@ -55,6 +59,8 @@ class PageRoutes {
       addToBank: (context) => AddToBank(),
       Items: (context) => ItemsPage(),
       orderItemAccountPage: (context) => OrderItemAccount(),
+      addCategory: (context) => AddCategory(),
+      addSubCategory: (context) => AddSubCategory(),
     };
   }
 }

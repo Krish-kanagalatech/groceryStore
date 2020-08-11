@@ -99,6 +99,12 @@ class _OrderInfoState extends State<OrderInfo> {
                 child: Column(
                   children: <Widget>[
                     ListTile(
+                      leading: Image.asset(
+                        'images/user.png',
+                        scale: 2.5,
+                        height: 42.3,
+                        width: 33.7,
+                      ),
                       title: Text(
                         'Fresh Red Onions',
                         style: Theme.of(context).textTheme.headline4.copyWith(
@@ -118,6 +124,12 @@ class _OrderInfoState extends State<OrderInfo> {
                       thickness: 1.0,
                     ),
                     ListTile(
+                      leading: Image.asset(
+                        'images/user.png',
+                        scale: 2.5,
+                        height: 42.3,
+                        width: 33.7,
+                      ),
                       title: Text(
                         'Fresh Cauliflower',
                         style: Theme.of(context).textTheme.headline4.copyWith(
@@ -137,6 +149,12 @@ class _OrderInfoState extends State<OrderInfo> {
                       thickness: 1.0,
                     ),
                     ListTile(
+                      leading: Image.asset(
+                        'images/user.png',
+                        scale: 2.5,
+                        height: 42.3,
+                        width: 33.7,
+                      ),
                       title: Text(
                         'Fresh Red Tomatoes',
                         style: Theme.of(context).textTheme.headline4.copyWith(
@@ -266,43 +284,61 @@ class _OrderInfoState extends State<OrderInfo> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                Container(
-                  color: kWhiteColor,
-                  padding: EdgeInsets.all(8.0),
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      radius: 22.0,
-                      backgroundImage: AssetImage('images/profile.png'),
+                // Container(
+                //   color: kWhiteColor,
+                //   padding: EdgeInsets.all(8.0),
+                //   child: ListTile(
+                //     leading: CircleAvatar(
+                //       radius: 22.0,
+                //       backgroundImage: AssetImage('images/profile.png'),
+                //     ),
+                //     title: Text(
+                //       'George Anderson',
+                //       style: Theme.of(context).textTheme.headline4.copyWith(
+                //           fontSize: 15.0, fontWeight: FontWeight.w500),
+                //     ),
+                //     subtitle: Text(
+                //       'Delivery Partner Assigned',
+                //       style: Theme.of(context)
+                //           .textTheme
+                //           .headline6
+                //           .copyWith(fontSize: 11.7, letterSpacing: 0.06),
+                //     ),
+                //     trailing: IconButton(
+                //       icon: Icon(
+                //         Icons.navigation,
+                //         color: kMainColor,
+                //         size: 17.0,
+                //       ),
+                //       onPressed: () {
+                //         Navigator.pushNamed(context, PageRoutes.chatPage);
+                //       },
+                //     ),
+                //   ),
+                // ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left:5,right:5),
+                      width: MediaQuery.of(context).size.width / 2 - 7.5,
+                      child: BottomBar(
+                          text: "Ready",
+                          onTap: () {
+                            Navigator.pop(context);
+                          }),
                     ),
-                    title: Text(
-                      'George Anderson',
-                      style: Theme.of(context).textTheme.headline4.copyWith(
-                          fontSize: 15.0, fontWeight: FontWeight.w500),
+                    Container(
+                      margin: EdgeInsets.only(right: 5),
+                      width: MediaQuery.of(context).size.width / 2 - 7.5,
+                      child: BottomBar(
+                          text: "Deliver",
+                          onTap: () {
+                            Navigator.pop(context);
+                          }),
                     ),
-                    subtitle: Text(
-                      'Delivery Partner Assigned',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline6
-                          .copyWith(fontSize: 11.7, letterSpacing: 0.06),
-                    ),
-                    trailing: IconButton(
-                      icon: Icon(
-                        Icons.navigation,
-                        color: kMainColor,
-                        size: 17.0,
-                      ),
-                      onPressed: () {
-                        Navigator.pushNamed(context, PageRoutes.chatPage);
-                      },
-                    ),
-                  ),
-                ),
-                BottomBar(
-                    text: "Ready to deliver",
-                    onTap: () {
-                      Navigator.pop(context);
-                    })
+                  ],
+                )
               ],
             ),
           )

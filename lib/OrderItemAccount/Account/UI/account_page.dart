@@ -46,29 +46,28 @@ class _AccountState extends State<Account> {
             onTap: () => Navigator.pushNamed(context, PageRoutes.tncPage)),
         BuildListTile(
             image: 'images/account/ic_menu_supportact.png',
-            text: 'Support',
+            text: 'Contact Support',
             onTap: () => Navigator.pushNamed(context, PageRoutes.supportPage,
                 arguments: number)),
         BuildListTile(
           image: 'images/account/ic_menu_aboutact.png',
-          text: 'About us',
+          text: 'Other Products',
           onTap: () => Navigator.pushNamed(context, PageRoutes.aboutUsPage),
         ),
-        Column(
-          children: <Widget>[
-            BuildListTile(
-                image: 'images/account/ic_menu_insight.png',
-                text: 'Insights',
-                onTap: () =>
-                    Navigator.pushNamed(context, PageRoutes.insightPage)),
-            BuildListTile(
-              image: 'images/account/ic_menu_wallet.png',
-              text: 'Wallet',
-              onTap: () => Navigator.pushNamed(context, PageRoutes.walletPage),
-            ),
-            LogoutTile(),
-          ],
+        BuildListTile(
+            image: 'images/account/ic_menu_insight.png',
+            text: 'Renew licence ',
+            onTap: () => Navigator.pushNamed(context, PageRoutes.insightPage)),
+        BuildListTile(
+            image: 'images/account/ic_menu_insight.png',
+            text: 'Add Manage Delivery Slots',
+            onTap: () => Navigator.pushNamed(context, PageRoutes.insightPage)),
+        BuildListTile(
+          image: 'images/account/ic_menu_wallet.png',
+          text: 'SMS Credit Balance',
+          onTap: () => Navigator.pushNamed(context, PageRoutes.walletPage),
         ),
+        LogoutTile(),
       ],
     );
   }
